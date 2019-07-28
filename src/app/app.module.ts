@@ -10,12 +10,14 @@ import { MatGridListComponent } from './component/mat-grid-list/mat-grid-list.co
 import { MatRaisedButtonComponent } from './component/mat-raised-button/mat-raised-button.component';
 import { HttpClientModule } from '@angular/common/http';
 import { InquiryService } from './service/inquiry.service';
+import { MatTabGroupComponent } from './component/mat-tab-group/mat-tab-group.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     MatGridListComponent,
-    MatRaisedButtonComponent
+    MatRaisedButtonComponent,
+    MatTabGroupComponent
   ],
   imports: [
     BrowserModule,

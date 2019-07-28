@@ -1,0 +1,7 @@
+<mat-tab-group #tabRef (selectedTabChange)="logChange(tabRef.selectedIndex)">
+    <mat-tab label="Products">
+        <app-mat-grid-list></app-mat-grid-list>
+    </mat-tab>
+    <mat-tab label="Pricing"></mat-tab>
+    <mat-tab label="Documentation"></mat-tab>
+</mat-tab-group>
