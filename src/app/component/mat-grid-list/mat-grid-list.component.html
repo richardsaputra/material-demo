@@ -1,0 +1,48 @@
+<!-- you can specify rowHeight="100px" or rowHeight="2:1" or rowHeight="fit" style="height: 200px" inside mat-grid-list -->
+<mat-grid-list cols="7" gutterSize="8px">
+    <mat-grid-tile rowspan="4" colspan="2">
+        <div class="container">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar></div>
+                    <mat-card-title>Card Title</mat-card-title>
+                    <mat-card-subtitle>doglovers.com</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/assets/img/dog.jpg">
+                <mat-card-content>
+                    <p>If you are a dog lover, come visit our website. We have tons of dog pictures that you would love!
+                    </p>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-flat-button color="accent">Visit</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile rowspan="4" colspan="4">
+        <div class="container">
+            <!-- you can specify multi="true" inside mat-accordion -->
+            <mat-accordion>
+                <mat-expansion-panel *ngFor="let t of topics">
+                    <mat-expansion-panel-header>
+                        <mat-panel-title>
+                            {{t.name}}
+                        </mat-panel-title>
+                        <mat-panel-description>
+                            Total Duration: {{t.duration}} hours
+                        </mat-panel-description>
+                    </mat-expansion-panel-header>
+                    <p>{{t.description}}</p>
+                    <mat-action-row>
+                        <button mat-flat-button color="primary">Enroll</button>
+                    </mat-action-row>
+                </mat-expansion-panel>
+            </mat-accordion>
+        </div>
+    </mat-grid-tile>
+    <mat-grid-tile>Area 3</mat-grid-tile>
+    <mat-grid-tile>Area 4</mat-grid-tile>
+    <mat-grid-tile>Area 5</mat-grid-tile>
+    <mat-grid-tile>Area 6</mat-grid-tile>
+    <mat-grid-tile colspan="7">Area 7</mat-grid-tile>
+</mat-grid-list>

@@ -1,0 +1,63 @@
+<div>
+  <button mat-raised-button color="primary" [matMenuTriggerData]="{buttonType: 'mat-raised-button', color: 'primary'}"
+    [matMenuTriggerFor]="lazyMenu">mat-raised-button</button>
+  <button mat-flat-button color="accent" [matMenuTriggerData]="{buttonType: 'mat-flat-button', color: 'accent'}"
+    [matMenuTriggerFor]="lazyMenu">mat-flat-button</button>
+  <button mat-stroked-button color="warn" disableRipple>mat-stroked-button</button>
+  <mat-menu #lazyMenu="matMenu">
+    <ng-template matMenuContent let-buttonType="buttonType" let-color="color">
+      <button mat-menu-item>{{buttonType}}</button>
+      <button mat-menu-item>{{color}}</button>
+    </ng-template>
+  </mat-menu>
+</div>
+<div>
+  <button mat-icon-button color="primary">icon</button>
+  <button mat-fab color="accent">fab</button>
+  <button mat-mini-fab color="warn">mini</button>
+</div>
+<div>
+  <mat-button-toggle [checked]="toggleBtn" (change)="getMessage($event.source.checked)">mat-button-toggle
+  </mat-button-toggle>
+  {{message}}
+</div>
+<div>
+  <!-- you can get rid of multiple to select only one value -->
+  <mat-button-toggle-group #toggleGroup="matButtonToggleGroup" (click)="getFramework(toggleGroup.value)" multiple>
+    <mat-button-toggle value="Angular">Angular</mat-button-toggle>
+    <mat-button-toggle value="Spring Boot">Spring Boot</mat-button-toggle>
+    <mat-button-toggle value="Flutter">Flutter</mat-button-toggle>
+  </mat-button-toggle-group>
+  {{myFramework}}
+</div>
+<div>
+  <button mat-flat-button matBadge="5" color="primary" matBadgeColor="warn">Notifications</button>
+  <button mat-stroked-button matBadge="5" color="primary" matBadgeColor="warn" matBadgePosition="above before"
+    matBadgeSize="small">Notifications</button>
+  <a matBadge="5" matBadgeColor="warn" matBadgePosition="below after" matBadgeSize="medium"
+    matBadgeOverlap="false">Notifications</a>
+  <a matBadge="5" matBadgeColor="warn" matBadgePosition="below before" matBadgeSize="large"
+    matBadgeOverlap="false">Notifications</a>
+  <button mat-fab color="primary">
+    <mat-icon [matBadge]="notifications" [matBadgeHidden]="notifications===0" matBadgeColor="warn"
+      matBadgeOverlap="false">assignment</mat-icon>
+  </button>
+</div>
+<div>
+  <mat-progress-spinner [value]="spinnerValue" *ngIf="showSpinner"></mat-progress-spinner>
+  <mat-spinner *ngIf="showSpinner"></mat-spinner>
+  <button mat-flat-button color="primary" (click)="loadData()">Load Data</button>
+</div>
+<div>
+  <!-- use dense to reduce text size -->
+  <mat-list dense>
+    <mat-list-item>Item 1</mat-list-item>
+    <mat-list-item>Item 2</mat-list-item>
+    <mat-list-item>Item 3</mat-list-item>
+  </mat-list>
+  <mat-nav-list>
+    <a mat-list-item href="#">Home</a>
+    <a mat-list-item href="#">Services</a>
+    <a mat-list-item href="#">About</a>
+  </mat-nav-list>
+</div>
