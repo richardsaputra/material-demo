@@ -3,19 +3,28 @@
     <mat-grid-tile rowspan="4" colspan="2">
         <div class="container">
             <mat-card>
-                <mat-card-header>
-                    <div mat-card-avatar></div>
-                    <mat-card-title>Card Title</mat-card-title>
-                    <mat-card-subtitle>doglovers.com</mat-card-subtitle>
-                </mat-card-header>
-                <img mat-card-image src="/assets/img/dog.jpg">
-                <mat-card-content>
-                    <p>If you are a dog lover, come visit our website. We have tons of dog pictures that you would love!
-                    </p>
-                </mat-card-content>
-                <mat-card-actions align="end">
-                    <button mat-flat-button color="accent">Visit</button>
-                </mat-card-actions>
+                <mat-form-field appearance="outline">
+                    <mat-label>Topic</mat-label>
+                    <mat-select [(value)]="id">
+                        <mat-option *ngFor="let t of topics" [value]="t.id">{{t.name}}</mat-option>
+                    </mat-select>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Name</mat-label>
+                    <input #name matInput required>
+                    <mat-hint align="end">Give your topic a name</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Duration</mat-label>
+                    <input type="number" #duration matInput required>
+                    <mat-hint align="end">Set your topic duration</mat-hint>
+                </mat-form-field>
+                <mat-form-field appearance="outline">
+                    <mat-label>Description</mat-label>
+                    <textarea #description matInput rows="4"></textarea>
+                    <mat-hint align="end">Describe your topic</mat-hint>
+                </mat-form-field>
+                <button mat-flat-button color="primary" (click)="onSubmit(name.value, duration.value, description.value)">Add New Topic</button>
             </mat-card>
         </div>
     </mat-grid-tile>
@@ -34,15 +43,69 @@
                     </mat-expansion-panel-header>
                     <p>{{t.description}}</p>
                     <mat-action-row>
-                        <button mat-flat-button color="primary">Enroll</button>
+                        <button mat-flat-button color="primary" (click)="onUpdate(t.name, name.value, duration.value, description.value)">Update</button>
                     </mat-action-row>
                 </mat-expansion-panel>
             </mat-accordion>
         </div>
     </mat-grid-tile>
-    <mat-grid-tile>Area 3</mat-grid-tile>
+    <mat-grid-tile rowspan="3">
+        <div class="container">
+            <mat-card>
+                <mat-card-header>
+                    <div mat-card-avatar></div>
+                    <mat-card-title>Dog Lover</mat-card-title>
+                    <mat-card-subtitle>doglover.com</mat-card-subtitle>
+                </mat-card-header>
+                <img mat-card-image src="/assets/img/dog.jpg">
+                <mat-card-content>
+                    <p>If you are a dog lover, come visit our website. We have tons of dog pictures that you would love!
+                    </p>
+                </mat-card-content>
+                <mat-card-actions align="end">
+                    <button mat-flat-button color="accent">Visit</button>
+                </mat-card-actions>
+            </mat-card>
+        </div>
+    </mat-grid-tile>
     <mat-grid-tile>Area 4</mat-grid-tile>
-    <mat-grid-tile>Area 5</mat-grid-tile>
-    <mat-grid-tile>Area 6</mat-grid-tile>
-    <mat-grid-tile colspan="7">Area 7</mat-grid-tile>
+    <mat-grid-tile colspan="7">
+        <div class="container">
+            <!-- by using linear, a step must be completed to be able to go to the next step -->
+            <mat-horizontal-stepper linear>
+                <!-- completed must be added if stepper is linear -->
+                <mat-step label="Shipping Address" [completed]='complete.checked'>
+                    <mat-checkbox #complete>Complete</mat-checkbox>
+                    <div fxLayout="row" fxLayoutAlign="end center">
+                        <button mat-icon-button matStepperNext>
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </mat-step>
+                <!-- add optional if a stepper is not mandatory -->
+                <mat-step label="Billing Address" completed=false optional>
+                    <p>Billing Address details..</p>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <button mat-icon-button matStepperPrevious>
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <button mat-icon-button matStepperNext>
+                            <mat-icon>arrow_forward</mat-icon>
+                        </button>
+                    </div>
+                </mat-step>
+                <mat-step label="Place Order" completed=false>
+                    <p>Place Order details..</p>
+                    <div fxLayout="row" fxLayoutAlign="space-between center">
+                        <button mat-icon-button matStepperPrevious>
+                            <mat-icon>arrow_back</mat-icon>
+                        </button>
+                        <button mat-icon-button>
+                            <mat-icon>check_circle_outline</mat-icon>
+                        </button>
+                    </div>
+                </mat-step>
+            </mat-horizontal-stepper>
+        </div>
+    </mat-grid-tile>
 </mat-grid-list>

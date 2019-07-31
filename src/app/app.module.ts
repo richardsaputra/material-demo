@@ -9,8 +9,9 @@ import { FormsModule } from '@angular/forms';
 import { MatGridListComponent } from './component/mat-grid-list/mat-grid-list.component';
 import { MatRaisedButtonComponent } from './component/mat-raised-button/mat-raised-button.component';
 import { HttpClientModule } from '@angular/common/http';
-import { InquiryService } from './service/inquiry.service';
+import { TopicService } from './service/topic.service';
 import { MatTabGroupComponent } from './component/mat-tab-group/mat-tab-group.component';
+import { FlexLayoutModule } from '@angular/flex-layout';
 
 @NgModule({
   declarations: [
@@ -25,9 +26,10 @@ import { MatTabGroupComponent } from './component/mat-tab-group/mat-tab-group.co
     BrowserAnimationsModule,
     MaterialModule,
     FormsModule,
-    HttpClientModule
+    HttpClientModule,
+    FlexLayoutModule
   ],
-  providers: [InquiryService],
+  providers: [TopicService],
   bootstrap: [AppComponent]
 })
 export class AppModule { }
